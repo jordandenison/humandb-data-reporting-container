@@ -21,7 +21,7 @@
     "humandb-auth-api-connector": "https://github.com/jordandenison/humandb-auth-connector.git",
     "socket.io-client": "^2.2.0",
     "superagent": "^3.8.3",
-    "tableify": "^1.1.0",
+    "tablify": "^0.1.5",
     "winston": "^2.3.1"
   },
   "devDependencies": {
