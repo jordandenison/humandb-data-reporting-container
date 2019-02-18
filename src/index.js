@@ -1,5 +1,6 @@
 require('app-module-path').addPath(__dirname)
 
+const moment = require('moment')
 const { init: authInit } = require('humandb-auth-api-connector')
 
 const { postMessage } = require('lib/discussion')
@@ -13,7 +14,7 @@ app.post('/generate-report', async (req, res, next) => {
   try {
     const report = await generateReport()
 
-    await postMessage('Data Availability Report 2', report)
+    await postMessage(`Available Data as of ${moment().format("dddd, MMMM Do YYYY, h:mm:ss a")}`, report)
 
     res.json({ status: 'ok' })
   } catch (e) {

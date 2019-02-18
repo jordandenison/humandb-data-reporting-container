@@ -2,9 +2,6 @@ const { reduce } = require('bluebird')
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
 const superagent = require('superagent')
-// const dirtree = require('directory-tree')
-// const tree = dirtree('/resources')
-// console.log('tree ', tree)
 
 const fhirResources = require('data/fhir-resources-stu2')
 
@@ -12,7 +9,9 @@ const getFhirResourceCount = async () =>
   reduce(fhirResources, async (resourceCount, resource, i) => {
     const result = await superagent.get(`http://stu2:4002/baseDstu2/${resource}`)
 
-    if (i < 6) { resourceCount[resource] = result.body.total }
+    if (result.body.total) {
+      resourceCount[resource] = result.body.total
+    }
 
     return resourceCount
   }, {})
