@@ -8,7 +8,7 @@ const postMessage = async (title, raw) => {
   try {
     // POST against the Discourse API to post the message
     const { body: json } = await superagent
-      .post(`http://hdb-dash-auth:3001/auth/discussion/post/message`)
+      .post(`http://hdb-dash-auth:3001/auth/discussion/post/event`)
       .set({
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
